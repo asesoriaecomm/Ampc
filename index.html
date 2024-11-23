@@ -43,18 +43,6 @@
             }
         }
 
-        /* Logo */
-        .logo {
-            width: 100px;
-            margin: 0 auto 20px;
-        }
-
-        .logo img {
-            width: 100%;
-            border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
         h1 {
             font-size: 2rem;
             margin-bottom: 20px;
@@ -124,12 +112,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="https://via.placeholder.com/100" alt="Logo">
-        </div>
-
-        <!-- Contenido principal -->
         <h1>Redirección Amazon Afiliados</h1>
         <p>Pega un enlace de Amazon y serás redirigido con nuestro código de afiliado. ¡Gracias por apoyar nuestro trabajo!</p>
         <input id="amazonLink" type="text" placeholder="Pega tu enlace de Amazon aquí">
@@ -149,13 +131,4 @@
                 return;
             }
 
-            // Añadir el código de afiliado al enlace
-            const url = new URL(amazonUrl);
-            url.searchParams.set('tag', 'asesoriaecomm-21'); // Agrega el parámetro `tag`
-
-            // Redirigir al usuario
-            window.location.href = url.toString();
-        }
-    </script>
-</body>
-</html>
+            //
