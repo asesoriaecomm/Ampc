@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirección Amazon Afiliados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redirección Amazon Afiliados</h1>
+    <p>Pega un enlace de Amazon y redirigiremos con el código de afiliado.</p>
+    <input id="amazonLink" type="text" placeholder="Pega tu enlace de Amazon aquí">
+    <button onclick="redirectWithAffiliate()">Redirigir</button>
+
+    <script>
+        function redirectWithAffiliate() {
+            const inputField = document.getElementById('amazonLink');
+            let amazonUrl = inputField.value.trim();
+
+            if (!amazonUrl || !amazonUrl.includes('amazon')) {
+                alert('Por favor, ingresa un enlace válido de Amazon.');
+                return;
+            }
+
+            // Añadir el código de afiliado al enlace
+            const url = new URL(amazonUrl);
+            url.searchParams.set('tag', 'asesoriaecomm-21'); // Agrega el parámetro `tag`
+
+            // Redirigir al usuario
+            window.location.href = url.toString();
+        }
+    </script>
+</body>
+</html>
