@@ -5,120 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirección Amazon Afiliados</title>
     <style>
-        /* Estilo global */
+        /* Estilos básicos */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: radial-gradient(circle, #ff7f50, #ff4500);
+            background: linear-gradient(135deg, #ff7f50, #ff6347);
             color: #fff;
         }
 
         /* Contenedor principal */
         .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
+            background: #ffffff20;
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
             width: 90%;
             max-width: 500px;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease-out;
-        }
-
-        /* Animación de aparición */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            color: #fff;
         }
 
         p {
             font-size: 1rem;
             margin-bottom: 30px;
-            color: #f0f0f0;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         input {
             width: 100%;
             padding: 15px;
             font-size: 1rem;
-            border: none;
-            border-radius: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             margin-bottom: 20px;
             outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         input:focus {
-            box-shadow: 0 8px 20px rgba(255, 127, 80, 0.5);
-            border: 1px solid #ff7f50;
+            border-color: #ff7f50;
         }
 
         button {
             width: 100%;
             padding: 15px;
             font-size: 1rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #ff7f50, #ff4500);
+            background: #ff7f50;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             color: #fff;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.5);
+            background: #ff6347;
         }
 
         /* Pie de página */
         .footer {
             margin-top: 20px;
-            font-size: 0.85rem;
-            color: #f0f0f0;
+            font-size: 0.8rem;
             opacity: 0.8;
-        }
-
-        /* Enlace del footer */
-        .footer a {
-            color: #ffb6a1;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Redirección Amazon Afiliados</h1>
-        <p>Pega un enlace de Amazon y serás redirigido con nuestro código de afiliado. ¡Gracias por apoyar nuestro trabajo!</p>
+        <p>Pega un enlace de Amazon y serás redirigido con nuestro código de afiliado. ¡Gracias por apoyar!</p>
         <input id="amazonLink" type="text" placeholder="Pega tu enlace de Amazon aquí">
         <button onclick="redirectWithAffiliate()">Redirigir ahora</button>
-        <div class="footer">
-            Desarrollado con ❤️ por <a href="#">asesoriaecomm-21</a>
-        </div>
+        <div class="footer">Desarrollado con 💻 para <strong>asesoriaecomm-21</strong></div>
     </div>
 
     <script>
@@ -131,4 +99,13 @@
                 return;
             }
 
-            //
+            // Añadir el código de afiliado al enlace
+            const url = new URL(amazonUrl);
+            url.searchParams.set('tag', 'asesoriaecomm-21'); // Agrega el parámetro `tag`
+
+            // Redirigir al usuario
+            window.location.href = url.toString();
+        }
+    </script>
+</body>
+</html>
