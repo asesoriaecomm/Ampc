@@ -3,75 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirigir a Amazon</title>
+    <title>Redirección Amazon Afiliados</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
+            margin: 20px;
             text-align: center;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
         }
-        input {
-            width: 100%;
+        input, button {
             padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #0073b1;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #005f8c;
-        }
-        .message {
-            margin-top: 10px;
-            font-size: 0.9em;
+            font-size: 16px;
+            margin: 10px;
+            width: 80%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Redirigir enlace Amazon</h1>
-        <p>Pega un enlace de Amazon para añadir tu código de afiliado:</p>
-        <input type="text" id="amazonLink" placeholder="Pega el enlace de Amazon aquí">
-        <button onclick="redirectWithAffiliate()">Redirigir</button>
-        <p class="message" id="message"></p>
-    </div>
+    <h1>Redirección Amazon Afiliados</h1>
+    <p>Pega un enlace de Amazon y redirigiremos con el código de afiliado.</p>
+    <input id="amazonLink" type="text" placeholder="Pega tu enlace de Amazon aquí">
+    <button onclick="redirectWithAffiliate()">Redirigir</button>
+
     <script>
         function redirectWithAffiliate() {
-            const input = document.getElementById('amazonLink').value;
-            const message = document.getElementById('message');
-            try {
-                if (!input.includes('amazon.')) {
-                    message.textContent = 'Por favor, ingresa un enlace válido de Amazon.';
-                    message.style.color = 'red';
-                    return;
-                }
-                // Crear un nuevo enlace con el código de afiliado
-                const url = new URL(input);
-                url.searchParams.set('tag', 'asesoriaecomm-21');
-                // Redirigir
-                window.location.href = url.toString();
-            } catch (error) {
-                message.textContent = 'El enlace no es válido. Inténtalo de nuevo.';
-                message.style.color = 'red';
+            const inputField = document.getElementById('amazonLink');
+            let amazonUrl = inputField.value.trim();
+
+            if (!amazonUrl || !amazonUrl.includes('amazon')) {
+                alert('Por favor, ingresa un enlace válido de Amazon.');
+                return;
             }
+
+            // Añadir el código de afiliado al enlace
+            const url = new URL(amazonUrl);
+            url.searchParams.set('tag', 'asesoriaecomm-21'); // Agrega el parámetro `tag`
+
+            // Redirigir al usuario
+            window.location.href = url.toString();
         }
     </script>
 </body>
