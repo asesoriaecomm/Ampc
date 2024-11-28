@@ -6,60 +6,84 @@
     <title>Herramienta para Afiliados de Amazon</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            margin: 50px;
         }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+
         input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #0073e6;
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            outline: none;
         }
+
+        button {
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         button:hover {
-            background-color: #005bb5;
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #ccc;
         }
     </style>
 </head>
 <body>
     <h1>Herramienta para Afiliados de Amazon</h1>
     <p>Convierte tus enlaces de Amazon con tu código de afiliado fácilmente. Pega el enlace, haz clic y listo.</p>
-    <input type="text" id="amazonLink" placeholder="Pega aquí el enlace de Amazon">
-    <button onclick="openAmazonLink()">Abrir en Amazon</button>
 
-    <script>
-        function openAmazonLink() {
-            const input = document.getElementById('amazonLink').value;
-            try {
-                const url = new URL(input);
-                const params = new URLSearchParams(url.search);
-                params.set('tag', 'asesoriaecomm-21'); // Agrega el código de afiliado
-                url.search = params.toString();
+    <div class="input-container">
+        <input type="text" id="amazonLink" placeholder="Pega aquí el enlace de Amazon">
+        <button onclick="openAmazonLink()">Abrir en Amazon</button>
+    </div>
 
-                const newWindow = window.open('', '_blank', 'noopener,noreferrer');
-                if (newWindow) {
-                    newWindow.opener = null; // Previene ataques de "tabnabbing"
-                    newWindow.document.write(`
-                        <!DOCTYPE html>
-                        <html lang="es">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <title>Redirigiendo...</title>
-                        </head>
-                        <body>
-                            <script>
-                                window.location.href = "${url.toString()}";
-                            </script>
-                            <noscript>
-                                <a href="${url.toString()}" rel="nofollow sponsored" target
+    <footer
