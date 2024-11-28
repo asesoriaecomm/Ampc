@@ -86,4 +86,39 @@
         <button onclick="openAmazonLink()">Abrir en Amazon</button>
     </div>
 
-    <footer
+    <footer>
+        Creado para facilitar el trabajo de afiliados de Amazon. 🌟
+    </footer>
+
+    <script>
+        function openAmazonLink() {
+            const input = document.getElementById('amazonLink').value.trim();
+            try {
+                const url = new URL(input); // Validamos si es un enlace válido
+                const amazonDomains = [
+                    'amazon.com',
+                    'amazon.es',
+                    'amazon.co.uk',
+                    'amazon.de',
+                    'amazon.fr',
+                    'amazon.it',
+                    'amazon.ca',
+                    'amazon.com.mx',
+                    'amazon.co.jp',
+                    'amazon.in',
+                    'amazon.cn',
+                    'amazon.com.au'
+                ];
+
+                if (amazonDomains.some(domain => url.hostname.endsWith(domain))) {
+                    window.open(url, '_blank', 'noopener,noreferrer'); // Abrimos en una nueva ventana
+                } else {
+                    alert('El enlace proporcionado no pertenece a Amazon. Por favor, ingresa un enlace válido.');
+                }
+            } catch (error) {
+                alert('Por favor, introduce un enlace válido.');
+            }
+        }
+    </script>
+</body>
+</html>
