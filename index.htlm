@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir Código de Afiliado</title>
+    <title>Herramienta para Afiliados de Amazon</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,8 +32,8 @@
     </style>
 </head>
 <body>
-    <h1>Agregar Código de Afiliado</h1>
-    <p>Pega el enlace de Amazon y haz clic en "Abrir en Amazon".</p>
+    <h1>Herramienta para Afiliados de Amazon</h1>
+    <p>Convierte tus enlaces de Amazon con tu código de afiliado fácilmente. Pega el enlace, haz clic y listo.</p>
     <input type="text" id="amazonLink" placeholder="Pega aquí el enlace de Amazon">
     <button onclick="openAmazonLink()">Abrir en Amazon</button>
 
@@ -45,11 +45,21 @@
                 const params = new URLSearchParams(url.search);
                 params.set('tag', 'asesoriaecomm-21'); // Agrega el código de afiliado
                 url.search = params.toString();
-                window.open(url.toString(), '_blank');
-            } catch (error) {
-                alert('Por favor, introduce un enlace válido de Amazon.');
-            }
-        }
-    </script>
-</body>
-</html>
+
+                const newWindow = window.open('', '_blank', 'noopener,noreferrer');
+                if (newWindow) {
+                    newWindow.opener = null; // Previene ataques de "tabnabbing"
+                    newWindow.document.write(`
+                        <!DOCTYPE html>
+                        <html lang="es">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Redirigiendo...</title>
+                        </head>
+                        <body>
+                            <script>
+                                window.location.href = "${url.toString()}";
+                            </script>
+                            <noscript>
+                                <a href="${url.toString()}" rel="nofollow sponsored" target
