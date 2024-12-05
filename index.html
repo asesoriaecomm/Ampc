@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Link Generator</title>
+    <title>Generador de Links de Amazon</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -63,14 +63,14 @@
                     return;
                 }
 
-                // Agregar el código de afiliado al enlace
+                // Agregar el código de afiliado
                 url.searchParams.set('tag', 'asesoriaecomm-21');
 
-                // Crear un enlace temporal con "rel=sponsored" y abrirlo
+                // Abrir el enlace con rel="sponsored"
                 const link = document.createElement('a');
                 link.href = url.toString(); // Enlace con el código de afiliado
                 link.target = '_blank'; // Abrir en una nueva pestaña
-                link.rel = 'sponsored'; // Atributo de afiliado
+                link.rel = 'noopener noreferrer sponsored'; // Rel para SEO y afiliados
                 document.body.appendChild(link); // Agregar temporalmente al DOM
                 link.click(); // Simular clic
                 document.body.removeChild(link); // Eliminar del DOM
