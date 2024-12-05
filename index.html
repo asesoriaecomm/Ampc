@@ -63,16 +63,20 @@
                     return;
                 }
 
-                // Agregar los parámetros necesarios
-                url.searchParams.set('linkCode', 'll1');
-                url.searchParams.set('tag', 'asesoriaecomm-21');
-                url.searchParams.set('linkId', generateUniqueLinkId());
-                url.searchParams.set('language', 'es_ES');
-                url.searchParams.set('ref_', 'as_li_ss_tl');
+                // Reconstruir la URL con los parámetros en el orden deseado
+                const params = new URLSearchParams();
+                params.set('linkCode', 'll1');
+                params.set('tag', 'asesoriaecomm-21');
+                params.set('linkId', generateUniqueLinkId());
+                params.set('language', 'es_ES');
+                params.set('ref_', 'as_li_ss_tl');
+
+                // Combinar la URL base con los parámetros ordenados
+                const newUrl = `${url.origin}${url.pathname}?${params.toString()}`;
 
                 // Crear un enlace con "rel=sponsored" y abrirlo
                 const link = document.createElement('a');
-                link.href = url.toString(); // Enlace con todos los parámetros
+                link.href = newUrl; // Enlace con parámetros ordenados
                 link.target = '_blank'; // Abrir en una nueva pestaña
                 link.rel = 'noopener noreferrer sponsored'; // Atributos de afiliado
                 document.body.appendChild(link); // Agregar temporalmente al DOM
