@@ -63,14 +63,15 @@
                     return;
                 }
 
-                // Agregar el código de afiliado
+                // Agregar el código de afiliado y el parámetro ref_
                 url.searchParams.set('tag', 'asesoriaecomm-21');
+                url.searchParams.set('ref_', 'as_li_ss_tl');
 
-                // Abrir el enlace con rel="sponsored"
+                // Crear un enlace con "rel=sponsored" y abrirlo
                 const link = document.createElement('a');
-                link.href = url.toString(); // Enlace con el código de afiliado
+                link.href = url.toString(); // Enlace con parámetros
                 link.target = '_blank'; // Abrir en una nueva pestaña
-                link.rel = 'noopener noreferrer sponsored'; // Rel para SEO y afiliados
+                link.rel = 'noopener noreferrer sponsored'; // Atributos de afiliado
                 document.body.appendChild(link); // Agregar temporalmente al DOM
                 link.click(); // Simular clic
                 document.body.removeChild(link); // Eliminar del DOM
