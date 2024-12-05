@@ -63,13 +63,16 @@
                     return;
                 }
 
-                // Agregar el código de afiliado y el parámetro ref_
+                // Agregar los parámetros necesarios
+                url.searchParams.set('linkCode', 'll1');
                 url.searchParams.set('tag', 'asesoriaecomm-21');
+                url.searchParams.set('linkId', generateUniqueLinkId());
+                url.searchParams.set('language', 'es_ES');
                 url.searchParams.set('ref_', 'as_li_ss_tl');
 
                 // Crear un enlace con "rel=sponsored" y abrirlo
                 const link = document.createElement('a');
-                link.href = url.toString(); // Enlace con parámetros
+                link.href = url.toString(); // Enlace con todos los parámetros
                 link.target = '_blank'; // Abrir en una nueva pestaña
                 link.rel = 'noopener noreferrer sponsored'; // Atributos de afiliado
                 document.body.appendChild(link); // Agregar temporalmente al DOM
@@ -78,6 +81,11 @@
             } catch (error) {
                 alert('El enlace proporcionado no es válido.');
             }
+        }
+
+        // Función para generar un ID único para el parámetro linkId
+        function generateUniqueLinkId() {
+            return Math.random().toString(36).substr(2, 16); // Genera un string aleatorio
         }
     </script>
 </body>
