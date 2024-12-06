@@ -5,36 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Links de Amazon</title>
     <style>
+        /* General */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
+            background: linear-gradient(135deg, #ff9900, #e68a00);
+            color: #333;
         }
+
+        /* Container */
         .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
-            max-width: 400px;
             width: 100%;
+            max-width: 400px;
         }
+
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff9900;
+        }
+
+        /* Input Field */
         input {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 15px;
             font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease-in-out;
         }
+
+        input:focus {
+            border-color: #ff9900;
+            box-shadow: 0px 0px 8px rgba(255, 153, 0, 0.5);
+            outline: none;
+        }
+
+        /* Button */
         button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #FF9900;
-            color: white;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #ff9900;
             border: none;
+            border-radius: 8px;
+            color: #fff;
             cursor: pointer;
+            transition: all 0.3s ease-in-out;
         }
+
         button:hover {
             background-color: #cc7a00;
+            box-shadow: 0px 8px 15px rgba(204, 122, 0, 0.4);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -42,7 +99,10 @@
     <div class="container">
         <h1>Generador de Links de Amazon</h1>
         <input type="url" id="amazonLink" placeholder="Pega aquí tu enlace de Amazon" required>
-        <button onclick="goToAmazon()">Ir a Amazon</button>
+        <button onclick="goToAmazon()">Generar y Abrir Enlace</button>
+        <div class="footer">
+            <p>Creado por <a href="#">Tu Nombre</a></p>
+        </div>
     </div>
 
     <script>
